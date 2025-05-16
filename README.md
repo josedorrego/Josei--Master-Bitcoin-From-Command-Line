@@ -27,4 +27,4 @@ Si necesitas ayuda, no dudes en enviar un mensaje a uno de los miembros del equi
 #### ¡Diviértete!
 
 ## Clases prácticas
-Introducción a las [sesiones prácticas](ejercicios/semana0/presentacion.md)
+Introducción a las [sesiones prácticas](/presentacion.md)
