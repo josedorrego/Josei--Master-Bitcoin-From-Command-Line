@@ -69,7 +69,7 @@ bitcoind --help
 Recalcar la importancia de conocer a bajo nivel las diferentes opciones de los comandos anteriores. Tratar de evitar que los arboles nos inpidan ver el bosque. Durante el curso comentaremos cosas muy interesantes, auténticos endless rabbit holes, pero hay que tener presente cual es el objetivo y estar lo más focalizado posible para aprovechar al máximo el curso.
 
 ## Presentar primera práctica
-Veámos nuestro [primer ejercicio](/ejercicios/semana1/ejercicio.md)
+Veámos nuestro [primer ejercicio](/ejercicios/Semana1/ejercicio.md)
 
 ## Dudas preguntas
 
