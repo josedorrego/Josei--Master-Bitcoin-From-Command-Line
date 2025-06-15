@@ -13,7 +13,6 @@ No será necesario realizar el IBD, ya que estaremos utilizando `regtest`, donde
 #### Configuración
 1. Descargar los binarios principales de Bitcoin desde el sitio web de Bitcoin Core https://bitcoincore.org/.
 2. Utilizar los hashes y la firma descargados para verificar que los binarios sean correctos. Imprimir un mensaje en la terminal: `"Verificación exitosa de la firma binaria"`.
-3. Copiar los binarios descargados a la carpeta `/usr/local/bin/`.
 
 #### Inicio
 1. Crear un archivo `bitcoin.conf` en el directorio de datos `/home/<nombre-de-usuario>/.bitcoin/`. Crear el directorio si no existe. Y agregar las siguientes líneas al archivo:
