@@ -23,10 +23,10 @@ fallbackfee=0.0001
 server=1
 txindex=1
 ```
-2. Iniciar `bitcoind`.
+2. Iniciar `bitcoind -daemon`.
 3. Crear dos billeteras llamadas `Miner` y `Trader`.
-4. Generar una dirección desde la billetera `Miner` con una etiqueta "Recompensa de Minería".
-5. Extraer nuevos bloques a esta dirección hasta obtener un saldo de billetera positivo. (utilizar `generatetoaddress`) (cuántos bloques se necesitaron para obtener un saldo positivo)
+4. Generar una dirección desde la billetera `Miner` con una etiqueta "Recompensa de Mineria".
+5. Extraer nuevos bloques a esta dirección hasta obtener un saldo de billetera positivo. (utilizar `generatetoaddress`) ¿cuántos bloques se necesitaron para obtener un saldo positivo?
 6. Escribir un breve comentario que describa por qué el saldo de la billetera para las recompensas en bloque se comporta de esa manera.
 7. Imprimir el saldo de la billetera `Miner`.
   

@@ -4,7 +4,7 @@ Ahora que tenemos un nodo de Bitcoin en funcionamiento, con una billetera conect
 
 A menudo, las billeteras necesitan aumentar las tarifas en momentos de altas tasas de tarifas. Hay dos formas de aumentar las tarifas, RBF y CPFP. Ambos utilizan mecanismos diferentes para aumentar la tarifa, pero no pueden usarse juntos. Intentar RBF una transacción invalidaría la CPFP, ya que la transacción secundaria no puede ser válida si su transacción principal se elimina del "mempool".
 
-El siguiente ejercicio intenta demostrar esa situación.
+El siguiente ejercicio demuestrar esa situación.
 
 ## Escribe un script de bash para:
 
@@ -23,7 +23,7 @@ El siguiente ejercicio intenta demostrar esa situación.
 {
   "input": [
 	{
-  	"txid": "<Trader's Txid>",
+  	"txid": "<Miner's Txid>",
   	"vout": "<num>"
 	},
 	{
