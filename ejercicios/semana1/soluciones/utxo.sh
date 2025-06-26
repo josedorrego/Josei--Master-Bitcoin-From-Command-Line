@@ -1,20 +1,11 @@
 #!/bin/bash
 
 : '
-# Para correr el ejercicio puedes ejecutar los siguientes comandos:
+# Ejecuta el siguientes comando desde el directorio donde está el script (debes tener docker instalado y corriendo):
 
-# en tu equipo local levantar un docker container con Ubuntu como sistema operativo
-docker run -ti --platform linux/x86_64 ubuntu:latest /bin/bash
-
-# en el container ejecutar los siguientes comandos en orden
-apt-get update && apt-get install -y wget gpg git nano jq bc
-nano ejercicio_1.sh
-
-# copiar el contenido del script en el archivo ejercicio_1.sh y guardar
-chmod +x ejercicio_1.sh
-
-# ejecutar el script
-./ejercicio_1.sh
+docker run -ti --platform linux/x86_64 \
+  -v "$PWD/utxo.sh:/opt/utxo.sh" \
+  ubuntu:latest bash -c "apt-get update && apt-get install -y wget gpg git nano jq bc && bash /opt/utxo.sh; exec bash"
 ' 
 
 set -e
@@ -180,8 +171,7 @@ obtener_tx_minada() {
 
     echo "=========================================================="
     echo "Imprimiendo por pantalla los detalles de la transacción..."
-    echo "=========================================================="
-
+    
     # txid: <ID de la transacción>
     echo "txid: $(echo $DECODED_TX | jq -r '.txid')"
     
