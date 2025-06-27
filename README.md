@@ -1,7 +1,7 @@
-# Master Bitcoin: Command Line / Aprendiendo Bitcoin desde de la Línea de Comandos
+# Master Bitcoin from the Command Line / Perfeccionando Bitcoin desde de la Línea de Comandos
 
 ## Introducción
-Bienvenidos a la cohorte de estudios de Aprendiendo Bitcoin desde la Línea de Comandos. Esta hoja de instrucciones generales tiene como objetivo ayudarte a aprovechar al máximo el programa.
+Bienvenidos a la cohorte de estudios de Master Bitcoin from the Command Line. Esta hoja de instrucciones generales tiene como objetivo ayudarte a aprovechar al máximo el programa.
 
  * Documentación oficial: [Learning Bitcoin from the Command Line](https://github.com/BlockchainCommons/Learning-Bitcoin-from-the-Command-Line)
  * Documentación oficial traducida al español: [Aprendiendo Bitcoin desde la Línea de Comandos](https://github.com/BlockchainCommons/Learning-Bitcoin-from-the-Command-Line/blob/spanish-translation/es/README.md)
