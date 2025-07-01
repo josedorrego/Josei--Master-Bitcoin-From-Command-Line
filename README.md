@@ -27,4 +27,7 @@ Si necesitas ayuda, no dudes en enviar un mensaje a uno de los miembros del equi
 #### ¡Diviértete!
 
 ## Clases prácticas
-Introducción a las [sesiones prácticas](/presentacion.md)
+Next: Introducción a las [sesiones prácticas](/presentacion.md)
+
+Autor: Lic en Física. Rosa Fenollar, Librería de Satoshi, educator. https://github.com/Rosasinespinas
+
