@@ -31,6 +31,7 @@ function configuration
 
 function createwallet 
 {
+   echo "### Bienvenido al asistente de creación de WALLETS de Bitcoin ###"
    echo "¿Cuántas wallets quieres crear?"
      read cant_wallets
    echo "Vas a crear $cant_wallets wallets"
@@ -46,13 +47,14 @@ function createwallet
        echo "Ocurrió un error en la creación de la wallet: "$name_wallet""
    fi
    done
-wallets=$(bitcoin-cli listwallets)
+   wallets=$(bitcoin-cli listwallets)
+   echo ""
    echo "Se crearon las siguentes wallets: $wallets"
 }
 
 function createaddress 
 {
-   echo "### Bienvenido al asistente de creación de direcciones de Bitcoin ###"
+   echo "### Bienvenido al asistente de creación de DIRECCIONES de Bitcoin ###"
    echo "Indique el NOMBRE de la wallet donde quiere crear la dirección:"
      read name_wallet
    echo "Indique el LABEL que le desea asignar a la dirección:"
@@ -66,11 +68,9 @@ function createaddress
    fi
 }
 
-#Intente hacer este loop para generar los bloques y no me funcionó, no he podido encontrar la 
-#razón por la que se va al infinito.
-
 function generarbloques 
 {
+   echo "### Bienvenido al asistente de creación de BLOQUES de Bitcoin ###"
    echo "Ingrese la wallet que va a usar para recibir:"
      read wallet
    echo "Ingrese la dirección para recibir la recompensa:"
@@ -78,26 +78,16 @@ function generarbloques
    echo "Ingrese cuantos bitcoins desea minar:"
      read meta
    balance=$(bitcoin-cli "-rpcwallet=$wallet" getbalance)
-   while ( $balance < $meta | bc)
+   meta=$meta
+   while [ "$(bc <<< "$balance < $meta")" == "1" ];
      do
        echo $balance
        bitcoin-cli "-rpcwallet=$wallet" generatetoaddress 1 "$address"
-     ((balance++))
+       balance=$(bitcoin-cli "-rpcwallet=$wallet" getbalance)
+       balance=$(bc <<< "$balance")
    done
-}
-
-function generarbloques2
-{
-   echo "Ingrese cuantos bloque desea minar:"
-     read bloques
-   echo "Ingrese la wallet que va a usar para recibir:"
-     read wallet
-   echo "Ingrese la dirección para recibir la recompensa:"
-     read address
-   bitcoin-cli "-rpcwallet=$wallet" generatetoaddress $bloques "$address"
-   balance=$(bitcoin-cli "-rpcwallet=$wallet" getbalance)
-   echo "El nuevo balance de la wallet $wallet es:"
-   echo "$balance"
+   echo ""
+   echo "### El nuevo balance en tu wallet $wallet es de $balance bitcoins. ###"
 }
 
 function txs {
@@ -192,12 +182,9 @@ function resumentx {
 
 #generarbloques
 
-#### Para generar los bloques trabaja mejor esta función, "generarbloques" no me funcionó :( ####
-#generarbloques2
+#### Después de hacer unas correcciones a la función "generarbloques" y entender mejor como funciona ####
+#### el nodo en modo "REGTEST" vi que tomo 101 bloques encontrar la primer recompensa de 50 bitcoins.####
 
-#### En una prueba me tomó más de 11000 bloques obtener 22 bitcoins y pienso que se comporta de esa ###
-### manera debido a que simula las probabilidades de obtener un bloque ###############################
-### En un segundo intento tomó alrededor de 2500 bloquea obtener 20 bitcoins
  
 #txs
 
