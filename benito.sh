@@ -73,7 +73,7 @@ function generarbloques
    echo "### Bienvenido al asistente de creación de BLOQUES de Bitcoin ###"
    echo "Ingrese la wallet que va a usar para recibir:"
      read wallet
-   echo "Ingrese la dirección para recibir la recompensa:"
+   echo "Ingrese la dirección (copia y pega) para recibir la recompensa:"
      read address
    echo "Ingrese cuantos bitcoins desea minar:"
      read meta
@@ -88,13 +88,15 @@ function generarbloques
    done
    echo ""
    echo "### El nuevo balance en tu wallet $wallet es de $balance bitcoins. ###"
+   bloques=$(bitcoin-cli getblockchaininfo | jq -r '.blocks')
+   echo "Se necesitaron $bloques bloques para minar los primeros $balance bitcoins."
 }
 
 function txs {
-   echo "#### Bienvenido al asistente de generación de transacciones de bitcoin ####"
-   echo "Ingrese el nombre de la wallet que desea usar:"
+   echo "#### Bienvenido al asistente de GENERACIÓN de transacciones de bitcoin ####"
+   echo "Ingrese el nombre de la wallet que va a ENVIAR:"
      read name_wallet
-   echo "Ingrese la dirección que va a recibir:"
+   echo "Ingrese la dirección (copia y pega) que va a recibir:"
      read address
    echo "Ingrese la cantidad a enviar:"
      read cantidad
@@ -102,9 +104,10 @@ function txs {
 }
 
 function resumentx {
-   echo "Ingrese el ID de la transacción a consultar:"
+   echo "#### Bienvenido al asistente de CONSULTA de transacciones de bitcoin ####"
+   echo "Ingrese el ID (copia y pega) de la transacción a consultar:"
      read ID
-   echo "Ingrese la wallet a consultar:"
+   echo "Ingrese la wallet (MINER) a consultar:"
      read wallet 
    txid=$(bitcoin-cli "-rpcwallet=$wallet" gettransaction "$ID" | jq -r '.txid')
    echo "#### El ID de la transacción es: ####"
@@ -140,58 +143,63 @@ function resumentx {
 #### Las siguientes líneas descargan los binarios necesario para instalar #### 
 #### BITCOIN CORE  ###########################################################
 
-#if downloads; then
-#   echo "######### La descarga de los binarios fue exitosa. #########"
-#else
-#   echo "######### Falló la descarga #########"
-#fi
+if downloads; then
+   echo "######### La descarga de los binarios fue exitosa. #########"
+else
+   echo "######### Falló la descarga #########"
+fi
 
 #### Las siguientes líneas verifican los archivos descargados ############### 
 
-#if verification; then
-#   echo "######### Verificación exitosa de la firma binaria #########"
-#else
-#   echo "######### Falló la verificación #########"
-#fi
+if verification; then
+   echo "######### Verificación exitosa de la firma binaria #########"
+else
+   echo "######### Falló la verificación #########"
+fi
 
 #### Las siguientes líneas instalan BITCOIN CORE ########################### 
 
-#if installation; then
-#   echo "######### La instalación ha sido exitosa #########"
-#else
-#   echo "######### La instalación ha fallado #########"
-#fi
+if installation; then
+   echo "######### La instalación ha sido exitosa #########"
+else
+   echo "######### La instalación ha fallado #########"
+fi
 
 #### Las siguientes líneas configuran BITCOIN CORE en modo REGTEST ######## 
 
-#if configuration; then
-#   echo "######### La configuración fue exitosa #########"
-#else
-#   echo "######### Falló la configuración #########"
-#fi
+if configuration; then
+   echo "######### La configuración fue exitosa #########"
+else
+   echo "######### Falló la configuración #########"
+fi
 
 #### ===============> INICIO DE BITCOIND EN MODO DAEMON <=================== ####
 
-#bitcoind -daemon
+bitcoind -daemon
 
 #### =============> CREACIÓN DE WALLETS, DIRECCIONES Y TXS <================= ####
 
-#createwallet
+createwallet
 
-#createaddress
+echo "#### Creación de la DIRECCIÓN para recibir la recompensa de MINERÍA ####"
+createaddress
 
-#generarbloques
+generarbloques
 
 #### Después de hacer unas correcciones a la función "generarbloques" y entender mejor como funciona ####
 #### el nodo en modo "REGTEST" vi que tomo 101 bloques encontrar la primer recompensa de 50 bitcoins.####
 
- 
-#txs
+echo "#### Creación de la DIRECCIÓN para recibir la TRANSACCIÓN ####"
+createaddress
+
+txs
 
 #### Consulta el estado de la mempool para ver la transacción en espera. ####
-#bitcoin-cli getrawmempool
+echo "Las siguientes transacciones se encuentran en la MEMPOOL:"
+bitcoin-cli getrawmempool
 
 #### Genera un nuevo bloque para minar la transacción. ####
-#bitcoin-cli "-rpcwallet=Miner" generatetoaddress 1 "bcrt1qvam7knlttshee8qckqaqxcn8309tfzdv7nsmw7"
+echo "Se ha generado el siguente bloque:"
+bitcoin-cli "-rpcwallet=Miner" generatetoaddress 1 "bcrt1qvam7knlttshee8qckqaqxcn8309tfzdv7nsmw7"
 
-#resumentx
+resumentx
